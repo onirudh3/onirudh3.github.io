@@ -28,10 +28,11 @@
             width: calc(100vw * 4); /* Adjust for the number of images */
         }
         .slides img {
-            width: 100vw; /* Fit image to viewport width */
-            height: 100vh; /* Fit image to viewport height */
+            width: 90vw; /* Slightly smaller to add black space around */
+            height: 90vh; /* Smaller height as well */
             object-fit: contain; /* Rescale while keeping the aspect ratio */
             background-color: black; /* Ensure extra space is black */
+            margin: auto; /* Center the image */
         }
         .navigation {
             position: absolute;
@@ -64,12 +65,12 @@
         }
         /* Left arrow */
         #prev::before {
-            border-width: 15px 20px 15px 0; /* Arrow shape */
+            border-width: 8px 12px 8px 0; /* Thinner arrow shape */
             border-color: transparent white transparent transparent;
         }
         /* Right arrow */
         #next::before {
-            border-width: 15px 0 15px 20px; /* Arrow shape */
+            border-width: 8px 0 8px 12px; /* Thinner arrow shape */
             border-color: transparent transparent transparent white;
         }
     </style>
