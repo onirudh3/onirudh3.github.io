@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html translate="no">
 <head>
-    <title> Photography </title>
+    <title>Photography - Anirudh Ravishankar</title>
     <style>
         body {
             background-color: #ffca7b;
@@ -10,17 +10,71 @@
             margin: 0;
             padding: 20px;
         }
-        img {
-            width: 80%;
-            max-width: 600px;
-            margin: 20px 0;
+        .slider {
+            position: relative;
+            max-width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+        .slides {
+            display: flex;
+            transition: transform 0.5s ease;
+            width: 300%; /* Adjust this based on number of images */
+        }
+        .slides img {
+            width: 100%;
+            border-radius: 10px;
+        }
+        .navigation {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+        }
+        .navigation a {
+            color: #333333;
+            font-size: 2em;
+            text-decoration: none;
+            padding: 10px;
+            background-color: rgba(255, 255, 255, 0.7);
+            border-radius: 50%;
         }
     </style>
 </head>
 <body>
-    <img src="images/DSC_0647.JPG">
-    <img src="images/DSC_0578.JPG">
-    <img src="images/DSC_0545.JPG">
-    <img src="images/DSC_0523.JPG">
+    <h1>My Photography</h1>
+    <div class="slider">
+        <div class="slides" id="slides">
+            <img src="images/DSC_0647.JPG">
+            <img src="images/DSC_0578.JPG">
+            <img src="images/DSC_0545.JPG">
+            <img src="images/DSC_0523.JPG">
+        </div>
+        <div class="navigation">
+            <a href="#" id="prev">&#10094;</a>
+            <a href="#" id="next">&#10095;</a>
+        </div>
+    </div>
+
+    <script>
+        let currentIndex = 0;
+        const slides = document.getElementById('slides');
+        const totalSlides = slides.children.length;
+
+        document.getElementById('next').addEventListener('click', function(event) {
+            event.preventDefault();
+            currentIndex = (currentIndex + 1) % totalSlides;
+            slides.style.transform = `translateX(-${currentIndex * 100}%)`;
+        });
+
+        document.getElementById('prev').addEventListener('click', function(event) {
+            event.preventDefault();
+            currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+            slides.style.transform = `translateX(-${currentIndex * 100}%)`;
+        });
+    </script>
 </body>
 </html>
+
