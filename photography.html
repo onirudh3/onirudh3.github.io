@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html translate="no">
 <head>
-    <title> Photography </title>
+    <title>Photography</title>
     <style>
         body {
             background-color: black; /* Black background */
@@ -25,12 +25,13 @@
             display: flex;
             transition: transform 0.5s ease;
             height: 100%;
-            width: 300%; /* Adjust for the number of images */
+            width: calc(100vw * 4); /* Adjust for the number of images */
         }
         .slides img {
-            width: 100vw; /* Make each image fit the viewport width */
-            height: 100vh; /* Ensure images fit the screen height */
-            object-fit: cover; /* Scale the images without distortion */
+            width: 100vw; /* Fit image to viewport width */
+            height: 100vh; /* Fit image to viewport height */
+            object-fit: contain; /* Rescale while keeping the aspect ratio */
+            background-color: black; /* Ensure extra space is black */
         }
         .navigation {
             position: absolute;
@@ -42,15 +43,20 @@
         }
         .navigation a {
             width: 2%; /* Thin slivers */
-            background-color: transparent; /* No background */
-            color: white; /* White arrows */
+            background-color: transparent;
+            color: white;
             display: flex;
             justify-content: center;
             align-items: center;
             text-decoration: none;
-            font-size: 2rem;
             transition: opacity 0.3s ease;
             opacity: 0.5;
+        }
+        .navigation a::before {
+            content: "";
+            width: 2px;
+            height: 50px;
+            background-color: white;
         }
         .navigation a:hover {
             opacity: 1; /* Highlight on hover */
@@ -66,8 +72,8 @@
             <img src="images/DSC_0523.JPG">
         </div>
         <div class="navigation">
-            <a href="#" id="prev">&#10094;</a> <!-- Left arrow -->
-            <a href="#" id="next">&#10095;</a> <!-- Right arrow -->
+            <a href="#" id="prev"></a> <!-- Left arrow as thin line -->
+            <a href="#" id="next"></a> <!-- Right arrow as thin line -->
         </div>
     </div>
 
@@ -90,5 +96,3 @@
     </script>
 </body>
 </html>
-
-
