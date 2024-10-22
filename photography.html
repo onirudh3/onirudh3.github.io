@@ -1,50 +1,63 @@
 <!DOCTYPE html>
 <html translate="no">
 <head>
-    <title>Photography - Anirudh Ravishankar</title>
+    <title> Photography </title>
     <style>
         body {
-            background-color: #ffca7b;
-            color: #333333;
-            text-align: center;
+            background-color: black; /* Black background */
+            color: white;
             margin: 0;
-            padding: 20px;
+            padding: 0;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* Ensure the page takes the full screen height */
         }
         .slider {
             position: relative;
-            max-width: 80%;
-            margin: auto;
+            width: 100%;
+            max-width: 100vw;
+            height: 100vh;
             overflow: hidden;
         }
         .slides {
             display: flex;
             transition: transform 0.5s ease;
-            width: 300%; /* Adjust this based on number of images */
+            height: 100%;
+            width: 300%; /* Adjust for the number of images */
         }
         .slides img {
-            width: 100%;
-            border-radius: 10px;
+            width: 100vw; /* Make each image fit the viewport width */
+            height: 100vh; /* Ensure images fit the screen height */
+            object-fit: cover; /* Scale the images without distortion */
         }
         .navigation {
             position: absolute;
-            top: 50%;
+            top: 0;
+            bottom: 0;
             width: 100%;
             display: flex;
             justify-content: space-between;
-            transform: translateY(-50%);
         }
         .navigation a {
-            color: #333333;
-            font-size: 2em;
+            width: 2%; /* Thin slivers */
+            background-color: transparent; /* No background */
+            color: white; /* White arrows */
+            display: flex;
+            justify-content: center;
+            align-items: center;
             text-decoration: none;
-            padding: 10px;
-            background-color: rgba(255, 255, 255, 0.7);
-            border-radius: 50%;
+            font-size: 2rem;
+            transition: opacity 0.3s ease;
+            opacity: 0.5;
+        }
+        .navigation a:hover {
+            opacity: 1; /* Highlight on hover */
         }
     </style>
 </head>
 <body>
-    <h1>My Photography</h1>
     <div class="slider">
         <div class="slides" id="slides">
             <img src="images/DSC_0647.JPG">
@@ -53,8 +66,8 @@
             <img src="images/DSC_0523.JPG">
         </div>
         <div class="navigation">
-            <a href="#" id="prev">&#10094;</a>
-            <a href="#" id="next">&#10095;</a>
+            <a href="#" id="prev">&#10094;</a> <!-- Left arrow -->
+            <a href="#" id="next">&#10095;</a> <!-- Right arrow -->
         </div>
     </div>
 
@@ -66,15 +79,16 @@
         document.getElementById('next').addEventListener('click', function(event) {
             event.preventDefault();
             currentIndex = (currentIndex + 1) % totalSlides;
-            slides.style.transform = `translateX(-${currentIndex * 100}%)`;
+            slides.style.transform = `translateX(-${currentIndex * 100}vw)`;
         });
 
         document.getElementById('prev').addEventListener('click', function(event) {
             event.preventDefault();
             currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
-            slides.style.transform = `translateX(-${currentIndex * 100}%)`;
+            slides.style.transform = `translateX(-${currentIndex * 100}vw)`;
         });
     </script>
 </body>
 </html>
+
 
