@@ -4,7 +4,7 @@
     <title>Photography</title>
     <style>
         body {
-            background-color: black; /* Black background */
+            background-color: black;
             color: white;
             margin: 0;
             padding: 0;
@@ -12,27 +12,27 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh; /* Ensure the page takes the full screen height */
+            height: 100vh;
         }
         .slider {
             position: relative;
             width: 100%;
             max-width: 100vw;
-            height: 100vh;
+            height: 90vh; /* Adjusted for the bar at the bottom */
             overflow: hidden;
         }
         .slides {
             display: flex;
             transition: transform 0.5s ease;
             height: 100%;
-            width: calc(100vw * 4); /* Adjust for the number of images */
+            width: calc(100vw * 6); /* Adjust for the number of images */
         }
         .slides img {
-            width: 90vw; /* Slightly smaller to add black space around */
-            height: 90vh; /* Smaller height as well */
-            object-fit: contain; /* Rescale while keeping the aspect ratio */
-            background-color: black; /* Ensure extra space is black */
-            margin: auto; /* Center the image */
+            width: 90vw;
+            height: 90vh;
+            object-fit: contain;
+            background-color: black;
+            margin: auto;
         }
         .navigation {
             position: absolute;
@@ -42,37 +42,48 @@
             display: flex;
             justify-content: space-between;
         }
-        .navigation a {
-            width: 2%; /* Thin slivers */
+        .navigation div {
+            width: 2%;
             background-color: transparent;
             display: flex;
             justify-content: center;
             align-items: center;
-            text-decoration: none;
-            transition: opacity 0.3s ease;
+            cursor: pointer;
             opacity: 0.5;
-            cursor: pointer; /* Ensure cursor is a pointer */
+            transition: opacity 0.3s ease;
         }
-        .navigation a:hover {
-            opacity: 1; /* Highlight on hover */
+        .navigation div:hover {
+            opacity: 1;
         }
-        /* Arrow styles */
-        .navigation a::before {
+        .navigation div::before {
             content: "";
             display: inline-block;
             width: 0;
             height: 0;
             border-style: solid;
         }
-        /* Left arrow */
         #prev::before {
-            border-width: 8px 10px 8px 0; /* Thinner arrow shape */
-            border-color: transparent white transparent transparent; /* White arrow */
+            border-width: 8px 10px 8px 0;
+            border-color: transparent white transparent transparent;
         }
-        /* Right arrow */
         #next::before {
-            border-width: 8px 0 8px 10px; /* Thinner arrow shape */
-            border-color: transparent transparent transparent white; /* White arrow */
+            border-width: 8px 0 8px 10px;
+            border-color: transparent transparent transparent white;
+        }
+        .footer-bar {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 10vh; /* 10% of the viewport height */
+            background-color: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .footer-bar a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.2rem;
         }
     </style>
 </head>
@@ -87,9 +98,13 @@
             <img src="images/DSC_0153.JPG">
         </div>
         <div class="navigation">
-            <a href="javascript:void(0)" id="prev"></a> <!-- Left thin arrow -->
-            <a href="javascript:void(0)" id="next"></a> <!-- Right thin arrow -->
+            <div id="prev"></div> <!-- Left thin arrow -->
+            <div id="next"></div> <!-- Right thin arrow -->
         </div>
+    </div>
+
+    <div class="footer-bar">
+        <a href="index.html">Anirudh Ravishankar</a>
     </div>
 
     <script>
